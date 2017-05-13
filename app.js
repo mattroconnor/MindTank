@@ -334,8 +334,7 @@ Build in message parser for handling > 640 characters
                 }
             }
             // callSendAPI(messageData);
-            console.log('sender is:', sender)
-            sendTypingOn(sender.id);
+            sendTypingOn(recipientId);
             queueRequest(messageData);
         }
 
