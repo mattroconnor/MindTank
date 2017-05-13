@@ -322,7 +322,7 @@ Build in message parser for handling > 640 characters
                 var numMessages = Math.ceil(messages[i].speech.length / 640);
 
                 for (var j=0; j < numMessages; j++){
-                    parsedMessages.push(messages[i].speech.slice((j*639),((j*639)+639))
+                    parsedMessages.push(messages[i].speech.slice((j*639),(j*639)+639))
                 }
             }
 
