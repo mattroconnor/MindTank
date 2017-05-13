@@ -241,8 +241,8 @@ Build in message parser for handling > 640 characters
                         return;
                     } else if (firstTimeUser) {
                         //circumvent going to Api.AI and just return a direct call
-                        var firstName = usersMap.get(senderID).first_name
-                        sendTextMessage(senderID, `Hi ${firstName}, welcome to Mind Tank.`)
+                        //var firstName = usersMap.get(senderID).first_name
+                        sendTextMessage(senderID, `Hi, welcome to Mind Tank.`)
                         sendTypingOn(senderID)
                         sendTextMessage(senderID, `I can help you chat with the world's brightest minds. For now you can chat with my friend, Albert Einstein.`)
                     } else if (quickReply) {
@@ -267,10 +267,10 @@ Build in message parser for handling > 640 characters
                 //Not perfect, should hit database for check
                 if (!usersMap.has(senderID)) {
                     firstTimeUser = true
-                    database.userData( function (user) {
-                        usersMap.set(senderID, user);
-                        callback(event, firstTimeUser)
-                    }, senderID);
+                    // database.userData( function (user) {
+                    //     usersMap.set(senderID, user);
+                    //     callback(event, firstTimeUser)
+                    // }, senderID);
                 } else{
                     callback(event, firstTimeUser)
                 }
