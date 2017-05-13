@@ -167,6 +167,7 @@ Build in message parser for handling > 640 characters
                         }
                         //Case 2- Recieve a message - HANDLED
                         else if (messagingEvent.message) {
+                            console.log('recieved message: ', messagingEvent.message)
                             receivedMessage(messagingEvent);
                         }
                         //Catch all
@@ -259,18 +260,23 @@ Build in message parser for handling > 640 characters
 
             //Function to set sessionID (required by API.ai) and user ID (for our own records)
             function setSessionAndUser(event, callback) {
+                console.log('setting sessions and user 1')
                 var senderID = event.sender.id;
                 var firstTimeUser = false
                 if (!sessionIds.has(senderID)) {
                     sessionIds.set(senderID, uuid.v1());
+                    console.log('setting sessions and user 2')
                 }
                 //Not perfect, should hit database for check
                 if (!usersMap.has(senderID)) {
+                    console.log('setting sessions and user 3')
                     firstTimeUser = true
+                    usersMap.set(senderID, senderID)
                     // database.userData( function (user) {
                     //     usersMap.set(senderID, user);
                     //     callback(event, firstTimeUser)
                     // }, senderID);
+                    callback(event, firstTimeUser)
                 } else{
                     callback(event, firstTimeUser)
                 }
