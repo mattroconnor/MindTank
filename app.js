@@ -277,7 +277,6 @@ Build in message parser for handling > 640 characters
                         usersMap.set(senderID, user);
                         callback(event, firstTimeUser)
                     }, senderID);
-                    callback(event, firstTimeUser)
                 } else{
                     callback(event, firstTimeUser)
                 }
