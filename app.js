@@ -316,11 +316,23 @@ Build in message parser for handling > 640 characters
             // messages is an array, iterate through and check if strings are > max FB 640 character limit
             //messages[i].speech must be less than 640 characters
 
+            parsedMessages = []
+            for (i = 0; i < messages.length; i++){
+
+                var numMessages = Math.ceil(messages[i].speech.length / 640);
+
+                for (i=0; i < numMessages; i++){
+                    parsedMessages.push(messages[i].speech.slice((i*639),639))
+                }
+            }
+
             //Build custom responses to API.ai actions here
             // if (action === ""){
             // }
             //Default Response
-            sendTextMessage(sender, responseText);
+            for (i = 0; i < parsedMessages.length; i++){
+                sendTextMessage(sender, parsedMessages[i]);
+            }
         }
 
         function sendTextMessage(recipientId, text) {
