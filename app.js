@@ -49,7 +49,7 @@ Build in message parser for handling > 640 characters
 
     //Require other files
     const config = require('./config');
-    // const database = require('./database');
+    const database = require('./database');
 
     // Process application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({
@@ -220,8 +220,6 @@ Build in message parser for handling > 640 characters
 
             function receivedMessage(event) {
 
-                sendTypingOn(event.sender.id);
-
                 var callback = function(event, firstTimeUser){
                     var senderID = event.sender.id;
                     var recipientID = event.recipient.id;
@@ -274,11 +272,11 @@ Build in message parser for handling > 640 characters
                 if (!usersMap.has(senderID)) {
                     console.log('setting sessions and user 3')
                     firstTimeUser = true
-                    usersMap.set(senderID, senderID)
-                    // database.userData( function (user) {
-                    //     usersMap.set(senderID, user);
-                    //     callback(event, firstTimeUser)
-                    // }, senderID);
+                    // usersMap.set(senderID, senderID)
+                    database.userData( function (user) {
+                        usersMap.set(senderID, user);
+                        callback(event, firstTimeUser)
+                    }, senderID);
                     callback(event, firstTimeUser)
                 } else{
                     callback(event, firstTimeUser)
