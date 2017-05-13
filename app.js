@@ -105,9 +105,12 @@ Build in message parser for handling > 640 characters
 
         // Facebook verification endpoint
         app.get('/webhook/', function (req, res) {
+            console.log('hit webook: ', req, res)
             if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
+                console.log('facebook verified')
                 res.status(200).send(req.query['hub.challenge']);
             } else {
+                consolge.log(facebook not verified)
                 console.error("Failed validation. Make sure the validation tokens match.");
                 res.sendStatus(403);
             }
@@ -149,6 +152,7 @@ Build in message parser for handling > 640 characters
 
         //Post to webhook to catch messages
         app.post('/webhook/', function (req, res) {
+            console.log('post hit webhook')
             var data = req.body;
 
             // Make sure this is a page subscription
@@ -218,9 +222,6 @@ Build in message parser for handling > 640 characters
 
                 sendTypingOn(event.sender.id);
 
-                //Set session and user, and trigger response function only one has completed (implemented as callback so usercheck can be done locally or migrated to db)
-                setSessionAndUser(event, callback);
-
                 var callback = function(event, firstTimeUser){
                     var senderID = event.sender.id;
                     var recipientID = event.recipient.id;
@@ -256,6 +257,8 @@ Build in message parser for handling > 640 characters
                         // ignore attachments for now
                     }
                 }
+                //Set session and user, and trigger response function only one has completed (implemented as callback so usercheck can be done locally or migrated to db)
+                setSessionAndUser(event, callback);
             }
 
             //Function to set sessionID (required by API.ai) and user ID (for our own records)
