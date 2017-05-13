@@ -11,7 +11,7 @@ module.exports = {
     DB_HOST: 'hngomrlb3vfq3jcr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     DB_USER: 'w5b4yrhyoee985xh',
     DB_PASSWORD: 'rlwpf78xe0f4khmx',
-    DB_DATABASE: '',
+    DB_DATABASE: 'dgq0gkqn7ai2ydok',
     TYPING_DELAY_SCALE: 200 //expressed as characters typed per second, humans can do 375 per/minute
     // ,
     // SENGRID_API_KEY: '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',
