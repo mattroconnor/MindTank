@@ -110,7 +110,7 @@ Build in message parser for handling > 640 characters
                 console.log('facebook verified')
                 res.status(200).send(req.query['hub.challenge']);
             } else {
-                consolge.log(facebook not verified)
+                console.log('facebook not verified')
                 console.error("Failed validation. Make sure the validation tokens match.");
                 res.sendStatus(403);
             }
