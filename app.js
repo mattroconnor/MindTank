@@ -316,7 +316,7 @@ Build in message parser for handling > 640 characters
             // messages is an array, iterate through and check if strings are > max FB 640 character limit
             //messages[i].speech must be less than 640 characters
 
-            parsedMessages = []
+            var parsedMessages = []
             for (i = 0; i < messages.length; i++){
 
                 var numMessages = Math.ceil(messages[i].speech.length / 640);
