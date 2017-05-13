@@ -49,7 +49,7 @@ Build in message parser for handling > 640 characters
 
     //Require other files
     const config = require('./config');
-    const database = require('./database');
+    // const database = require('./database');
 
     // Process application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({
