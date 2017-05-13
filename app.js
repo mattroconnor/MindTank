@@ -317,11 +317,11 @@ Build in message parser for handling > 640 characters
             //messages[i].speech must be less than 640 characters
 
             var parsedMessages = []
-            for (i = 0; i < messages.length; i++){
+            for (var i = 0; i < messages.length; i++){
 
                 var numMessages = Math.ceil(messages[i].speech.length / 640);
 
-                for (i=0; i < numMessages; i++){
+                for (var i=0; i < numMessages; i++){
                     parsedMessages.push(messages[i].speech.slice((i*639),639))
                 }
             }
@@ -330,7 +330,7 @@ Build in message parser for handling > 640 characters
             // if (action === ""){
             // }
             //Default Response
-            for (i = 0; i < parsedMessages.length; i++){
+            for (var i = 0; i < parsedMessages.length; i++){
                 sendTextMessage(sender, parsedMessages[i]);
             }
         }
