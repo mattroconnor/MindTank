@@ -103,6 +103,13 @@ Build in message parser for handling > 640 characters
             verify: verifyRequestSignature
         }));
 
+var path = require('path');
+
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
         // Facebook verification endpoint
         app.get('/webhook/', function (req, res) {
             console.log('hit webook: ', req, res)
